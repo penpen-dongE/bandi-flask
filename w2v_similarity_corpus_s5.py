@@ -22,9 +22,9 @@ def embedding_distance(user_say, data, num=5, policy=0):
     s1 = nlp_sentence(user_say)
     for i in data:
         s2 = i[6]
-        if s2:
+        if s1 and s2:
             s = model.wv.n_similarity(s1, s2)
-        result.append((s, i[1]))
+            result.append((s, i[1]))
     result = sorted(result, key=operator.itemgetter(0), reverse=True)
     return result[policy:num+policy]
 
